@@ -12,9 +12,29 @@ PlayerSettingsSection:NewSlider("Jump", "Mikal Jordän", 1000, 0, function(s)
 end)
 
 
-local Item = Window:NewTab("Item")
-local ItemSection aw = Movement:NewSection("Item Giver")
+local more = Window:NewTab("More Things")
+local moreSection = more:NewSection("More Things")
+moreSection:NewButton("Delete Doors","Delete all Dors",function()
+	game.Workspace.Doors:ClearAllChildren()
+	end)
+
+end
 
 
-local Item = Window:NewTab("Location")
-local ItemSection aw = Movement:NewSection("Click to TP")
+local credits = Window:NewTab("Credits")
+local creditsSection1 = credits:NewSection("Discord: Gans#2470")
+local creditsSection2 = credits:NewSection("Betatester Discord: Katsu#5427")
+local creditsSection3 = credits:NewSection("UiLib: Kavo-ui")
+local settings = Window:NewTab("Menu Settings")
+local settingsSection = settings:NewSection("Customize Menu")
+local colors = {
+    SchemeColor = Color3.fromRGB(0,255,255),
+    Background = Color3.fromRGB(0, 0, 0),
+    Header = Color3.fromRGB(0, 0, 0),
+    TextColor = Color3.fromRGB(255,255,255),
+    ElementColor = Color3.fromRGB(20, 20, 20)
+}
+for theme, color in pairs(colors) do
+    settingsSection:NewColorPicker(theme, "Change your "..theme, color, function(color3)
+        Library:ChangeColor(theme, color3)
+    end)
